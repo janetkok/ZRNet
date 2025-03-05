@@ -1,0 +1,17 @@
+.tif
+*.out
+*.pt
+__pycache__/
+*.tar
+*.pth
+*.tiff
+output/*
+*.png
+*.jpg
+.idea
+*.pyc
+*.h5
+*.log
+*.state
+Restormer/.eggs/*
+**/summary.csv
