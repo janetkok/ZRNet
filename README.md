@@ -19,7 +19,7 @@ Download CytoImageNet dataset from [Kaggle](https://www.kaggle.com/datasets/stan
 
 *Pretraining ZRNet_mlp*
 ```
-torchrun --nproc_per_node=1 --master_port=4370 basicsr/train_infer.py -opt 'Options/zornet.yml' --launcher pytorch
+torchrun --nproc_per_node=1 --master_port=4370 basicsr/train_infer.py -opt 'Options/zrnet_mlp.yml' --launcher pytorch
 ```
 *Training ZRNet*
 The pretrained ZRNet_mlp can be downloaded from from [here](https://zenodo.org/record/14865721/files/pretrainedmodels.zip?download=1)
