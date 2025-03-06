@@ -1,7 +1,4 @@
 """ Summary utilities
-
-Hacked together by / Copyright 2020 Ross Wightman
-Modified by Janet Kok to update cross validation results
 """
 import csv
 import os
