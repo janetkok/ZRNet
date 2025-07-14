@@ -1,4 +1,4 @@
-# ZRNet: Physics-Informed Graph Neural Networks with Frequency-Aware Learning for Optical Aberration Correction
+# ZRNet: Physics-Informed Network with Frequency-Aware Learning for Optical Aberration Correction
 
 
 ## Installation
