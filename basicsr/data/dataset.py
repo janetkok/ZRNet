@@ -216,7 +216,7 @@ class CytoImageNetDataset(torch.utils.data.Dataset):
         self.num_zernike = len(zernike)
         self.C_val_test = None
         if split=='val':
-            C_val_test_df_path = root_db + '/val_zernike/'+str(self.zRange_start)+'_'+str(self.zRange_end)+'_'+str(self.num_zernike)+'.csv'
+            C_val_test_df_path = root_db + '/'+str(self.zRange_start)+'_'+str(self.zRange_end)+'_'+str(self.num_zernike)+'.csv'
             if os.path.isfile(C_val_test_df_path): #load test csv
                 C_val_test_df = pd.read_csv(C_val_test_df_path)
                 self.C_val_test = torch.tensor(C_val_test_df.values).float()
