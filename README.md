@@ -15,6 +15,20 @@ python setup.py develop --no_cuda_ext
 
 Download CytoImageNet dataset from [Kaggle](https://www.kaggle.com/datasets/stanleyhua/cytoimagenet?resource=download).
 
+Add full_path column to the metadata.csv file.
+```
+import pandas as pd
+import os
+
+input_filename = 'metadata.csv'
+# The base directory to prepend to the path
+base_dir = '/db'
+
+df = pd.read_csv(input_filename)
+df['full_path'] = base_dir  + df['path'] + '/' + df['filename']
+df.to_csv(input_filename, index=False)
+
+```
 ## Training
 
 *Pretraining ZRNet_mlp*
