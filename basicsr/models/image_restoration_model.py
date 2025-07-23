@@ -14,7 +14,7 @@ import os
 import torch.nn.functional as F
 from torchvision import utils
 
-
+import lpips
 from basicsr.data.dataset import Conv3_fft
 from pathlib import Path
 
@@ -237,6 +237,7 @@ class ImageCleanModel(BaseModel):
     def infer(self, dataloader, current_iter, tb_logger,
                            save_img,num_val):
         mse_loss = torch.nn.MSELoss()
+        lpips_vgg = lpips.LPIPS(net='vgg').cuda()
         if os.environ['LOCAL_RANK'] == '0':
             save_folder = Path(osp.join(self.opt['path']['visualization'],
                                                 f'{num_val}_{current_iter}'))
@@ -245,6 +246,7 @@ class ImageCleanModel(BaseModel):
             self.metric_results = {
                     'psnr': 0,
                     'ssim': 0,
+                    'lpips':0,
                     'zernike_mse':0,
                     'zernike_rmswfe':torch.zeros(self.num_zernike).to(self.device)
                 }
@@ -262,6 +264,7 @@ class ImageCleanModel(BaseModel):
                 recons = torch.clamp(self.output,min=0,max=1)
                 self.metric_results['psnr'] += psnr(og_img, recons, data_range=(0,1)).item()
                 self.metric_results['ssim'] +=  ssim(og_img, recons, data_range=(0,1)).item()
+                self.metric_results['lpips'] +=  lpips_vgg(og_img, recons,normalize=True).item()
                 self.metric_results['zernike_mse'] += mse_loss(self.output_z, self.zern_gt)
                 self.metric_results['zernike_rmswfe'] += ((self.output_z - self.zern_gt) ** 2).sum(0)
                 
