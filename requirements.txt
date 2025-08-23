@@ -6,3 +6,4 @@ h5py
 PyYAML
 lmdb
 natsort
+fvcore
