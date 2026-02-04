@@ -255,8 +255,8 @@ class CytoImageNetDataset(torch.utils.data.Dataset):
 
     
 class Conv3_fft(Aberration_CONV3):
-    def __init__(self,img_size,,device='cpu',minFT=0,maxFT=115,precision=torch.float,zernike=[4,5,6,7,8,9],zRange=1.0):
-        super().__init__(img_size,device=device,minFT=minFT,maxFT=maxFT,precision=precision,zernike=zernike,zRange=zRange)
+    def __init__(self,img_size,,device='cpu',precision=torch.float,zernike=[4,5,6,7,8,9],zRange=1.0):
+        super().__init__(img_size,device=device,precision=precision,zernike=zernike,zRange=zRange)
 
 
     def gen(self,batch_size=32,C=None,og=None):
